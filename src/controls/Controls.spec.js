@@ -35,5 +35,5 @@ describe("Controls the component", () => {
 
         const openButton = getByTestId('open-button');
         expect(openButton.disabled).toBe(true)
-    })
+    });
 })
