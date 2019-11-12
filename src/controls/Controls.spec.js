@@ -27,7 +27,7 @@ describe("Controls the component", () => {
 
     test('Gate is closed and locked', () => {
         const { getByTestId } = render(
-            <Controls locked={true} closed={true} toggle={toggleMock} />
+            <Controls locked={true} closed={true} />
         );
 
         const unlockButton = getByTestId('unlock-button');
@@ -36,4 +36,18 @@ describe("Controls the component", () => {
         const openButton = getByTestId('open-button');
         expect(openButton.disabled).toBe(true)
     });
+
+    test('Gate is closed and unlocked', () => {
+        const { getByTestId } = render(
+            <Controls locked={false} closed={true} />
+        );
+
+        const unlockButton = getByTestId('unlock-button');
+        expect(unlockButton.textContent).toBe('Lock Gate');
+        expect(unlockButton.disabled).toBe(false);
+
+        const openButton = getByTestId('open-button');
+        expect(openButton.textContent).toBe('Open Gate');
+        expect(openButton.disabled).toBe(false)
+    })
 })

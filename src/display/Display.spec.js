@@ -18,6 +18,20 @@ describe('Display', () => {
         expect(lockButton).toHaveClass('green-led')
     });
 
+    test('red-led displays when closed', () => {
+        const { getByText } = render(<Display closed={true} />);
+        const openButton = getByText('Closed');
+        expect(openButton).toHaveClass('red-led')
+    });
+
+    test('green-led displays when open', () => {
+        const { getByText } = render(<Display closed={false} />);
+        const openButton = getByText('Open');
+        expect(openButton).toHaveClass('green-led')
+    });
+
+
+
 })
 
 
